@@ -1,9 +1,6 @@
-/* Last update: 16-Aug-17 removed 'falling slowly" from 'Expect Rain' rule
- * Last udpate: Added enumerated weather types, improved efficiency
- * Last update: 07-Aug-17, with improved forecast rules
- * 
- * ESP32 and BMP180 or BME280 and OLED SH1106 or SSD1306 display Weather Forecaster 
- * Using air pressure changes to predict weather based on an advanced set of forecasting rules. 
+/* 
+ * ESP32 Novelty Xmas and New year count down timers
+ *
  * The 'MIT License (MIT) Copyright (c) 2016 by David Bird'. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
  * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish,  
  * distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the 
@@ -17,7 +14,8 @@
 */
 
 #include <Wire.h>
-#include "SH1106.h"
+#include "SH1106.h"    // See: https://github.com/squix78/esp8266-oled-ssd1306
+//#include "SSD1306.h" // Include as required for chosen display size 0.96" = SSD1306 1.3" = SH1106 "SH1106.h"    // See: https://github.com/squix78/esp8266-oled-ssd1306
 #include "OLEDDisplayUi.h"
 #include "time.h"
 #include "NTPClient.h"
@@ -32,8 +30,9 @@ int update_cnt=0,newyear=0,xmas=0;
 int T1days=0,T1hours=0,T1minutes=0,T1seconds=0;
 int T2days=0,T2hours=0,T2minutes=0,T2seconds=0;
 
-SH1106 display(0x3c, 5,4); // OLED display object definition (address, SDA, SCL) Connect OLED SDA pin to ESP GPIO-5 and OLED SCL pin to GPIO-4 on X-board
-OLEDDisplayUi ui ( &display );
+SH1106 display(0x3c, 5,4); // 1.3" OLED display object definition (address, SDA, SCL) Connect OLED SDA pin to ESP GPIO-5 and OLED SCL pin to GPIO-4 on X-board
+//SSD1306 display(0x3c, 5,4); // 0.96" OLED display object, change according to your display type
+OLEDDisplayUiOLEDDisplayUi ui ( &display );
 
 WiFiUDP ntpUDP; //** NTP client class
 NTPClient timeClient(ntpUDP);
