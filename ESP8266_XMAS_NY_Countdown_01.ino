@@ -12,7 +12,6 @@
 */
 
 #include <Wire.h>
-#include "SH1106.h"
 #include "SH1106.h"    // See: https://github.com/squix78/esp8266-oled-ssd1306
 //#include "SSD1306.h" // Include as required for chosen display size 0.96" = SSD1306 1.3" = SH1106 "SH1106.h"
 #include "OLEDDisplayUi.h"
@@ -30,7 +29,7 @@ int T1days=0,T1hours=0,T1minutes=0,T1seconds=0;
 int T2days=0,T2hours=0,T2minutes=0,T2seconds=0;
 
 SH1106 display(0x3c, D3,D4); // OLED display object definition (address, SDA, SCL) Connect OLED SDA pin to ESP GPIO-5 and OLED SCL pin to GPIO-4 on X-board
-//SSD1306 display(0x3c, D3,D4);
+//SSD1306 display(0x3c, D3,D4); // For 0.96" OLED
 OLEDDisplayUi ui ( &display );
 
 WiFiUDP ntpUDP; //** NTP client class
