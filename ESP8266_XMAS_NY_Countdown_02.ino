@@ -96,7 +96,7 @@ int overlaysCount = 1;
 
 void setup() {
   Serial.begin(115200);
-  Wire.begin(5,4);
+  Wire.begin(D3,D4);
   if (!StartWiFi(ssid,password)) Serial.println("Failed to start WiFi Service after 20 attempts");;
   SetupTime();
   while (!UpdateTime());  //Get the latest time
